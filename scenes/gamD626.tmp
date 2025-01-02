@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://cha0d6r16gxpq"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_422bf"]
+[ext_resource type="PackedScene" uid="uid://bedm5lnguvf2m" path="res://scenes/grid_item.tscn" id="3_b1nhh"]
+[ext_resource type="Theme" uid="uid://ddhiwsmsjpe7c" path="res://themes/theme.tres" id="3_tyjot"]
+[ext_resource type="Texture2D" uid="uid://rkbc11m8v4v5" path="res://assets/sprites/resetbtn.png" id="5_8p7b4"]
+[ext_resource type="Texture2D" uid="uid://dg8flkt5jq0ak" path="res://assets/sprites/grid.png" id="6_8c4ac"]
+[ext_resource type="Texture2D" uid="uid://c046og1of008f" path="res://assets/sprites/background.png" id="6_qs320"]
+[ext_resource type="Texture2D" uid="uid://bi3pnkx363xsb" path="res://assets/sprites/backbtn.png" id="6_tyufb"]
+[ext_resource type="Texture2D" uid="uid://vfqnkhdbuwnc" path="res://assets/sprites/logo-pvp.png" id="7_675sm"]
+[ext_resource type="Texture2D" uid="uid://q82wsopnft28" path="res://assets/sprites/turn.png" id="9_n6qsx"]
+[ext_resource type="Texture2D" uid="uid://dfs4pdk4wrn6i" path="res://assets/sprites/circle-small.png" id="10_cisu4"]
+[ext_resource type="Texture2D" uid="uid://f67gg3klvekq" path="res://assets/sprites/cross-small.png" id="11_qwhoq"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_422bf")
+GridItemScene = ExtResource("3_b1nhh")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="UI"]
+texture = ExtResource("6_qs320")
+centered = false
+
+[node name="Logo-pvp" type="Sprite2D" parent="UI"]
+position = Vector2(90, 37)
+texture = ExtResource("7_675sm")
+
+[node name="Circle-small" type="Sprite2D" parent="UI"]
+position = Vector2(31, 88)
+texture = ExtResource("10_cisu4")
+
+[node name="Cross-small" type="Sprite2D" parent="UI"]
+position = Vector2(153, 89)
+texture = ExtResource("11_qwhoq")
+
+[node name="Turn" type="Sprite2D" parent="."]
+position = Vector2(90, 285)
+texture = ExtResource("9_n6qsx")
+
+[node name="Cross" type="Sprite2D" parent="Turn"]
+visible = false
+position = Vector2(0, 4)
+texture = ExtResource("11_qwhoq")
+
+[node name="Circle" type="Sprite2D" parent="Turn"]
+visible = false
+position = Vector2(0, 4)
+texture = ExtResource("10_cisu4")
+
+[node name="WinnerText" type="RichTextLabel" parent="."]
+offset_top = 241.0
+offset_right = 180.0
+offset_bottom = 264.0
+theme = ExtResource("3_tyjot")
+bbcode_enabled = true
+
+[node name="ResetBtn" type="TextureButton" parent="."]
+offset_left = 122.0
+offset_top = 264.0
+offset_right = 164.0
+offset_bottom = 306.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_tyjot")
+texture_normal = ExtResource("5_8p7b4")
+
+[node name="BackBtn" type="TextureButton" parent="."]
+offset_left = 16.0
+offset_top = 264.0
+offset_right = 58.0
+offset_bottom = 306.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_tyjot")
+texture_normal = ExtResource("6_tyufb")
+
+[node name="GridGroup" type="Node2D" parent="."]
+
+[node name="GridSprite" type="Sprite2D" parent="GridGroup"]
+position = Vector2(92, 168)
+texture = ExtResource("6_8c4ac")
+metadata/_edit_group_ = true
+
+[node name="Grid" type="Node2D" parent="GridGroup"]
+position = Vector2(24, 100)
+metadata/_edit_group_ = true
+
+[node name="Scores" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CrossScore" type="RichTextLabel" parent="Scores"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 84.0
+offset_right = 144.0
+offset_bottom = 100.0
+size_flags_horizontal = 0
+theme = ExtResource("3_tyjot")
+bbcode_enabled = true
+text = "[right]0[/right]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="CircleScore" type="RichTextLabel" parent="Scores"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 84.0
+offset_right = 96.0
+offset_bottom = 100.0
+size_flags_horizontal = 0
+theme = ExtResource("3_tyjot")
+bbcode_enabled = true
+text = "[left]0[/left]"
+fit_content = true
+autowrap_mode = 0
+
+[connection signal="pressed" from="ResetBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BackBtn" to="." method="_on_button_pressed"]

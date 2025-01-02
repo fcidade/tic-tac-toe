@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cha0d6r16gxpq"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_422bf"]
+[ext_resource type="Texture2D" uid="uid://c2xor77oyrpy1" path="res://assets/sprites/sprite.png" id="1_ma3d5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2y12"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_422bf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ma3d5")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_t2y12")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

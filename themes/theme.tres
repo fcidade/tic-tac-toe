@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ddhiwsmsjpe7c"]
+
+[ext_resource type="FontFile" uid="uid://baoxabtgfmdwu" path="res://assets/fonts/monogram/ttf/monogram-extended.ttf" id="1_ykmo7"]
+
+[sub_resource type="SystemFont" id="SystemFont_57aes"]
+font_names = PackedStringArray("Monospace")
+
+[resource]
+default_font = ExtResource("1_ykmo7")
+Label/fonts/font = SubResource("SystemFont_57aes")

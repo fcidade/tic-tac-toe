@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cha0d6r16gxpq"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_422bf"]
+[ext_resource type="Texture2D" uid="uid://c2xor77oyrpy1" path="res://assets/sprites/sprite.png" id="1_ma3d5"]
+[ext_resource type="PackedScene" uid="uid://bedm5lnguvf2m" path="res://scenes/grid_item.tscn" id="3_b1nhh"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_422bf")
+GridItemScene = ExtResource("3_b1nhh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ma3d5")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)
+
+[node name="CurrentPlayer" type="RichTextLabel" parent="."]
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 71.0
+text = "Player: "
+
+[node name="WinnerText" type="RichTextLabel" parent="."]
+offset_top = 67.0
+offset_right = 96.0
+offset_bottom = 90.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 17.0
+offset_top = 82.0
+offset_right = 68.0
+offset_bottom = 113.0
+text = "Reset"
+
+[node name="Grid" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
